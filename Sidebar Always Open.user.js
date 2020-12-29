@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Sidebar Always Open
-// @version      0.3
+// @version      0.4
 // @description  Keep that sidebar open please!
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -51,7 +51,10 @@ function toggleNavDropdown__2020(dropdown)
 
 		// close any open dropdowns
 		for (var i = 0; i < elements.length; i++){
-			dropdown.style.display = "none";
+            if (elements[i].id != "navprofiledropdown__2020")
+            {
+			elements[i].style.display = "none";
+            }
 		}
 
 		$('.nav-top__2020').find('.nav-dropdown-arrow__2020').removeClass('nav-dropdown-arrow-rotate'); // nav arrow rotation
