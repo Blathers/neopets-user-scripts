@@ -38,7 +38,8 @@ function getPostAuthorPet()
 {
     var results = document.getElementsByClassName("postAuthorPetIcon");
     for(var i = 0; i < results.length; i++){
-        var newhtml = results[i].innerHTML.replace("1/1","2/2");
+        var newhtml = results[i].innerHTML.replace("2/1","2/2");
+        newhtml = newhtml.replace("1/1","2/2");
         newhtml = newhtml.replace("width=\"50\"","");
         newhtml = newhtml.replace("height=\"50\"","");
         results[i].innerHTML = newhtml;
