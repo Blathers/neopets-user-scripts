@@ -3,7 +3,6 @@
 // @version      0.1
 // @description  Keep that sidebar open please!
 // @author       Harvey
-// @require      http://code.jquery.com/jquery-latest.js
 // @match        http://www.neopets.com/*
 // @grant        none
 // ==/UserScript==
