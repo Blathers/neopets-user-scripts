@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Sidebar Always Open
-// @version      0.1
+// @version      0.2
 // @description  Keep that sidebar open please!
 // @author       Harvey
 // @match        http://www.neopets.com/*

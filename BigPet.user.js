@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Big Pet
-// @version      0.1
+// @version      0.2
 // @description  Make the boards a little nicer with big pet images!
 // @author       Harvey
 // @match        http://www.neopets.com/*
