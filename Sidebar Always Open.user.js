@@ -1,10 +1,13 @@
 // ==UserScript==
 // @name         Sidebar Always Open
-// @version      0.4
+// @version      0.5
 // @description  Keep that sidebar open please!
 // @author       Harvey
 // @match        http://www.neopets.com/*
-// @grant        none
+// @grant        GM.getValue
+// @grant        GM.setValue
+
+// @require      http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
 // ==/UserScript==
 var $ = window.jQuery;
 
@@ -25,6 +28,41 @@ function increaseTrack()
 function EditAttributeValue(elemId, attribute, newvalue)
 {
     $("#"+elemId).attr(attribute,newvalue);
+}
+
+var isToggledOpen = true;
+
+async function toggleSidebar()
+{
+    GM.setValue("sidebar_always_open_toggle_value", !isToggledOpen);
+    openorcloseonload();
+
+}
+
+async function openorcloseonload()
+{
+    var toggled = await GM.getValue("sidebar_always_open_toggle_value", -1);
+
+    if (toggled == -1)
+    {
+        GM.setValue("sidebar_always_open_toggle_value", true);
+        toggled = true;
+    }
+
+    if (toggled)
+    {
+        openSidebar();
+    }
+    else
+    {
+        closeSidebar();
+    }
+    isToggledOpen = toggled;
+}
+
+function closeSidebar()
+{
+    EditAttributeValue("navprofiledropdown__2020", "style", "display: none!important;");
 }
 
 function openSidebar()
@@ -71,9 +109,9 @@ function toggleNavDropdown__2020(dropdown)
 	// Logged out navigation only code
 	if(typeof(menuicon) != 'undefined' && menuicon != null){
 
-		if (dropdown === navdropdownout__2020 && shade.style.display === "block"){
+		if (dropdown === "navdropdownout__2020" && shade.style.display === "block"){
 			menuicon.classList.add('navmenu-icon-x');
-		} else if (dropdown === navdropdownout__2020 && shade.style.display === "none"){
+		} else if (dropdown === "navdropdownout__2020" && shade.style.display === "none"){
 			menuicon.classList.remove('navmenu-icon-x');
 		}
 
@@ -100,8 +138,9 @@ function removeLink()
 {
     var results = document.getElementsByClassName("nav-pet-menu-icon__2020");
     for(var i = 0; i < results.length; i++){
-        results[i].outerHTML = results[i].outerHTML.replace("onclick=\"toggleNavDropdown__2020(navprofiledropdown__2020)","");
-        results[i].outerHTML = "<a href=\"http://www.neopets.com/quickref.phtml\">" + results[i].outerHTML + "</a>";
+        results[i].outerHTML = results[i].outerHTML.replace("onclick=\"toggleNavDropdown__2020(navprofiledropdown__2020)","onclick=\"toggleSidebar()");
+        results[i].onclick = toggleSidebar;
+        //results[i].outerHTML = "<a href=\"http://www.neopets.com/quickref.phtml\">" + results[i].outerHTML + "</a>";
     }
 }
 
@@ -119,5 +158,5 @@ function GM_addStyle(css) {
   sheet.insertRule(css, (sheet.rules || sheet.cssRules || []).length);
 }
 
-openSidebar();
 removeLink();
+openorcloseonload();
