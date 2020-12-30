@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets Add Important Links
-// @version      0.1
+// @version      0.2
 // @description  Adds some missing links to the sidebar
 // @author       Harvey
 // @match        http://www.neopets.com/*
