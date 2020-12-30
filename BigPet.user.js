@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Big Pet
-// @version      0.2
+// @version      0.3
 // @description  Make the boards a little nicer with big pet images!
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -37,7 +37,7 @@ function getPostAuthorPet()
 {
     var results = document.getElementsByClassName("postAuthorPetIcon");
     for(var i = 0; i < results.length; i++){
-        var newhtml = results[i].innerHTML.replace("/1","/2");
+        var newhtml = results[i].innerHTML.replace("/1.png","/2.png");
         newhtml = newhtml.replace("width=\"50\"","");
         newhtml = newhtml.replace("height=\"50\"","");
         results[i].innerHTML = newhtml;
