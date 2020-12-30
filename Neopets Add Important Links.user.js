@@ -20,9 +20,9 @@ function getLinkHtml(link,icon,text)
 function addLinks()
 {
     var addedLinks = "";
-    var quickref = getLinkHtml("quickref.phtml", "nav-petcentral-icon__2020", "Quickref");
-    var quickstock = getLinkHtml("quickstock.phtml", "nav-userlookup-icon__2020", "Quickstock");
-    var sdb = getLinkHtml("safetydeposit.phtml", "nav-inventory-icon__2020", "Safety Deposit Box");
+    var quickref = getLinkHtml("http://www.neopets.com/quickref.phtml", "nav-petcentral-icon__2020", "Quickref");
+    var quickstock = getLinkHtml("http://www.neopets.com/quickstock.phtml", "nav-userlookup-icon__2020", "Quickstock");
+    var sdb = getLinkHtml("http://www.neopets.com/safetydeposit.phtml", "nav-inventory-icon__2020", "Safety Deposit Box");
     addedLinks = addedLinks + quickref;
     addedLinks = addedLinks + quickstock;
     addedLinks = addedLinks + sdb;
