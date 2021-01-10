@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Big Pet
-// @version      0.4
+// @version      0.5
 // @description  Make the boards a little nicer with big pet images!
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -11,7 +11,7 @@ GM_addStyle ( `
     .postPetInfo {
         margin-right: 50% !important;
         margin-left: 50% !important;
-        width:185px;
+        width:160px;
     }
 ` );
 GM_addStyle ( `
