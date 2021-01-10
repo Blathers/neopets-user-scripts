@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Sidebar Always Open
-// @version      0.6
+// @version      0.7
 // @description  Keep that sidebar open please!
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -163,7 +163,7 @@ function moveShopWiz(open)
 
         GM_addStyle ( `
          .navsub-left__2020 {
-         left:120px!important;
+         left:10px!important;
          }
         ` );
 
