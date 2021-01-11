@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets Add Important Links
-// @version      0.2
+// @version      0.3
 // @description  Adds some missing links to the sidebar
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -29,11 +29,13 @@ function addLinks()
 
     var clock = document.getElementsByClassName("nav-profile-dropdown-clock__2020")[0];
 
-    var firstSet = document.getElementById("navprofiledropdown__2020");
-    var newEl = document.createElement('ul');
-    newEl.innerHTML = addedLinks;
-    clock.parentNode.insertBefore(newEl, clock.nextSibling.nextSibling);
-
+    if (clock != null)
+    {
+        var firstSet = document.getElementById("navprofiledropdown__2020");
+        var newEl = document.createElement('ul');
+        newEl.innerHTML = addedLinks;
+        clock.parentNode.insertBefore(newEl, clock.nextSibling.nextSibling);
+    }
 }
 
 addLinks();

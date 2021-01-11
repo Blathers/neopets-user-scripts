@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Sidebar Always Open
-// @version      0.7
+// @version      0.8
 // @description  Keep that sidebar open please!
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -140,10 +140,11 @@ function addJS_Node (text, s_URL, funcToRun, runOnLoad) {
 function removeLink()
 {
     var results = document.getElementsByClassName("nav-pet-menu-icon__2020");
-    //for(var i = 0; i < results.length; i++){
+    if (results[0] != null)
+    {
         results[0].outerHTML = results[0].outerHTML.replace("onclick=\"toggleNavDropdown__2020(navprofiledropdown__2020)","onclick=\"toggleSidebar()");
         results[0].onclick = toggleSidebar;
-    //}
+    }
 }
 
 function moveShopWiz(open)
