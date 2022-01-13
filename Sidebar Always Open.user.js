@@ -17,6 +17,15 @@ GM_addStyle ( `
     }
 ` );
 
+$(document).ready(function () {
+
+    var results = document.getElementsByClassName("nav-pet-menu-icon__2020");
+    results[0].addEventListener('click', function () {
+        toggleSidebar();
+    });
+
+});
+
 function increaseTrack()
 {
     var results = document.getElementsByClassName("slick-track");
@@ -38,6 +47,7 @@ async function toggleSidebar()
     openorcloseonload();
 
 }
+
 
 async function openorcloseonload()
 {
@@ -142,8 +152,9 @@ function removeLink()
     var results = document.getElementsByClassName("nav-pet-menu-icon__2020");
     if (results[0] != null)
     {
-        results[0].outerHTML = results[0].outerHTML.replace("onclick=\"toggleNavDropdown__2020(navprofiledropdown__2020)","onclick=\"toggleSidebar()");
-        results[0].onclick = toggleSidebar;
+
+        results[0].outerHTML = results[0].outerHTML.replace("onclick=\"toggleNavDropdown__2020(navprofiledropdown__2020)","");
+
     }
 }
 
