@@ -4,6 +4,7 @@
 // @description  Make the boards a little nicer with big pet images!
 // @author       Harvey
 // @match        http://www.neopets.com/*
+// @match        https://www.neopets.com/*
 // @grant        none
 // ==/UserScript==
 

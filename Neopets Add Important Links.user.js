@@ -4,6 +4,7 @@
 // @description  Adds some missing links to the sidebar
 // @author       Harvey
 // @match        http://www.neopets.com/*
+// @match        https://www.neopets.com/*
 // @grant        none
 // ==/UserScript==
 

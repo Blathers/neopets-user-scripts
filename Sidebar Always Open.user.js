@@ -4,6 +4,7 @@
 // @description  Keep that sidebar open please!
 // @author       Harvey
 // @match        http://www.neopets.com/*
+// @match        https://www.neopets.com/*
 // @grant        GM.getValue
 // @grant        GM.setValue
 
