@@ -1,6 +1,12 @@
 # neopets-user-scripts
 A collection of userscripts for making your neopets prettier
 
+## Installation
+
+You'll need tampermonkey or another script addon for your browser to use.
+
+Click the "raw" text to get a pretty install option.
+
 ## Big Pet
 ![Big Pet Image](https://i.imgur.com/1J1lTTr.png)
 
