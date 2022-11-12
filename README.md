@@ -43,3 +43,15 @@ You can comment out any of these lines if you want to remove one:
 
 * Gives you the ability to toggle on and off the left sidebar, and it will remember your choice (keep it open or keep it closed)
 * Removes the whole page darkening effect when the sidebar is open
+
+## Restock Tracker
+
+**IMPORTANT:** This user script gives NO ADVANTAGE to restocking. It only runs on a successful haggle page and your shop, and simply saves a piece of data when you've made a purchase at a shop.
+You need to then manually enter when you sell the item (from your shop page).
+Please routinely clear out the restock history so it doesn't overflow. The total amount will always be permanent.
+
+* Logs your item, purchase price, and date when you make a purchase on a neopets shop
+* Shows shop purchases under the "Sales History" tab of your shop
+* Ability to enter the sell price
+* Auto calculates your profits and keeps a running "Total Profit" history log
+* Clear items manually or with a quick button to remove all. Save history defaults to max of 30.
