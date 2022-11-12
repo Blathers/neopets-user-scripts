@@ -2,7 +2,7 @@
 // @name         Restock History
 // @version      1.0
 // @description  Track your neopets restocks
-// @author       You
+// @author       Harvey
 // @match        https://www.neopets.com/haggle.phtml
 // @match        https://www.neopets.com/market.phtml?type=sales
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com

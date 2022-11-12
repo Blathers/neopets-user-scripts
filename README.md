@@ -54,3 +54,8 @@ You need to then manually enter when you sell the item (from your shop page).
 * Ability to enter the sell price
 * Auto calculates your profits and keeps a running "Total Profit" history log
 * Clear items manually or with a quick button to remove all. Save history defaults to max of 30, once you reach this items will start being removed from the log.
+
+
+## Fixed Position SSW
+Keeps your SSW and bookmarks always on screen when the page scrolls down instead of hiding behind the top bar. 
+Recommended you use this with "Sidebar Always Open" so that they don't overlap stuff on the screen.
