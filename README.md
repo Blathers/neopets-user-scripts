@@ -59,3 +59,9 @@ You need to then manually enter when you sell the item (from your shop page).
 ## Fixed Position SSW
 Keeps your SSW and bookmarks always on screen when the page scrolls down instead of hiding behind the top bar. 
 Recommended you use this with "Sidebar Always Open" so that they don't overlap stuff on the screen.
+
+## Neopets Beta Animation Toggler
+
+![Animaion checkbox](https://i.imgur.com/L4DWHnN.png)
+
+* Adds a checkbox on the bottom bar that lets you turn off the beta animation for the birthday site theme
