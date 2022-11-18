@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets Add Important Links
-// @version      1.0
+// @version      1.1
 // @description  Adds some missing links to the sidebar
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -34,7 +34,7 @@ function addLinks(onBoards)
     addedLinks = addedLinks + custom; //Customization link
     addedLinks = addedLinks + sdb; //Safety deposit box link
 
-    var addInvLink = "<a href=\"" +beginning +"inventory.phtml\"><div class=\"navsub-np-meter__2020\" style=\"display: inline-block;margin-right:5px; margin-bottom: 0px;text-align:center;\"><div class=\"navsub-np-icon__2020\" style=\"background:none!important;\"><img src=\"https://images.neopets.com/themes/h5/hauntedwoods/images/inventory-icon.svg\" width=\"25\"></div><span id=\"npanchor\" class=\"np-text__2020\">Inventory</span></div></a>"
+    var addInvLink = "<a href=\"" +beginning +"inventory.phtml\"><div class=\"navsub-np-meter__2020\" style=\"display: inline-block;margin-right:5px; margin-bottom: 0px;text-align:center;\"><div class=\"navsub-np-icon__2020\" style=\"background:none!important;\"><img src=\"https://images.neopets.com/themes/h5/hauntedwoods/images/inventory-icon.svg\" width=\"25\"></div><span class=\"np-text__2020\">Inventory</span></div></a>"
 
     var clock = document.getElementsByClassName("nav-profile-dropdown-clock__2020")[0];
 
