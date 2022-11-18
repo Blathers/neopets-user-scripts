@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets Beta Animation Toggler
-// @version      1.0
+// @version      1.1
 // @description  Ability to turn on or off the neopets animation on the beta site
 // @author       Harvey
 // @match        https://www.neopets.com/*
@@ -45,8 +45,9 @@ animation: none !important;
 ` );
         }
         checkText.textContent="Animation";
+        if (footerDiv){
         footerDiv.parentNode.insertBefore(checkDiv, footerDiv);
-
+        }
 
     }
 
