@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Restock History
-// @version      1.0
+// @version      1.1
 // @description  Track your neopets restocks
 // @author       Harvey
 // @match        https://www.neopets.com/haggle.phtml
@@ -8,9 +8,6 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @grant       GM.setValue
 // @grant       GM.getValue
-// @grant       GM_registerMenuCommand
-// @grant       GM_openInTab
-// @grant       GM_log
 // ==/UserScript==
 
 
@@ -20,10 +17,6 @@
    const idSave = "idSaveData";
    const maxSaves = 30;
    const foreverProfit = "foreverProfitData";
-
-    GM_registerMenuCommand('Developer Refresh', async function() {
-        await checkForHaggleWin();
-    }, 'r');
 
    //Check if we've successfully haggled an item
    const checkForHaggleWin = async ()=> {
