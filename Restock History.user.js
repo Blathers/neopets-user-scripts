@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Restock History
-// @version      1.1
+// @version      2.0
 // @description  Track your neopets restocks
 // @author       Harvey
 // @match        https://www.neopets.com/haggle.phtml
@@ -8,6 +8,7 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @grant       GM.setValue
 // @grant       GM.getValue
+// @grant GM.log
 // ==/UserScript==
 
 
@@ -17,6 +18,9 @@
    const idSave = "idSaveData";
    const maxSaves = 30;
    const foreverProfit = "foreverProfitData";
+   const profitByMonth = "profitByMonth";
+   var dropOpen = false;
+   var dropOpenedBefore = false;
 
    //Check if we've successfully haggled an item
    const checkForHaggleWin = async ()=> {
@@ -43,6 +47,8 @@
 
            var buyPrice = Number(itemPrice.innerHTML);
 
+           var today = new Date();
+
            const item = {
                id: await getUpdateNextUnusedId(),
                name: itemName.innerHTML,
@@ -50,7 +56,7 @@
                image: itemImageUrl,
                sold: false,
                sellprice: 0,
-               timestamp: new Date().getTime(),
+               timestamp: today.getTime(),
                soldtime: null
            }
 
@@ -60,8 +66,10 @@
            GM.setValue(dataStorage, JSON.stringify(itemData));
 
            await updateForeverProfit(-buyPrice)
+           await setProfitPerMonth(-buyPrice, today.getMonth(), today.getYear());
        }
    }
+
 
    const getUpdateNextUnusedId = async () =>{
        const id = await GM.getValue(idSave);
@@ -177,6 +185,13 @@ display:inline;
   opacity: .5;
 }
 
+#monthDrop{
+display:none;
+width:100%;
+}
+#monthDrop tr:nth-child(even) {
+background-color: #E5E5E5;
+}
     </style>
        `;
 
@@ -226,18 +241,62 @@ display:inline;
        profitHeader.textContent="Profit";
        trDoc.appendChild(profitHeader);
 
-
-       //Create total profit bar
+       //Create monthly profit bar
 
        var topTr = document.createElement("tr");
-       var totalProfitTextTd = document.createElement("th");
-       totalProfitTextTd.setAttribute("colspan", "4");
+
+
+       var monthlyProfitTextTd = document.createElement("td");
+
+       var monthlyDropButton = document.createElement("button");
+       var mDropImg = document.createElement("img");
+       mDropImg.setAttribute("src", "https://i.imgur.com/bf0iMNr.png");
+       mDropImg.setAttribute("width", "10");
+       monthlyDropButton.style.marginRight = "10px";
+       monthlyDropButton.setAttribute("title", "Show or hide monthly stats over all time.");
+       monthlyDropButton.appendChild(mDropImg);
+       monthlyDropButton.addEventListener("click", await monthlyDropClick, false);
+
+       monthlyProfitTextTd.setAttribute("colspan", "5");
+       monthlyProfitTextTd.setAttribute("class", "totalProfitText");
+       var helpImg1 = document.createElement("img");
+       helpImg1.setAttribute("src", "//images.neopets.com/help/question_mark.png");
+       helpImg1.setAttribute("width", "8");
+       helpImg1.setAttribute("title", "Monthly profit takes into account buy and sell prices for this month only. It clears every month.");
+       var mpText = document.createElement("b");
+       mpText.textContent = "Monthly Profit:";
+       monthlyProfitTextTd.appendChild(monthlyDropButton);
+       monthlyProfitTextTd.appendChild(helpImg1);
+       monthlyProfitTextTd.appendChild(mpText);
+
+       var monthlyProfitAmountTd = document.createElement("td");
+       monthlyProfitAmountTd.setAttribute("colspan", "4");
+       var day = new Date();
+       var mprof = await getProfitPerMonth(day.getMonth(), day.getYear());
+       monthlyProfitAmountTd.textContent = mprof.toLocaleString("en-US") + " NP";
+       if (mprof > 0){
+                monthlyProfitAmountTd.setAttribute("class", "totalProfitText profit");
+       }else if (mprof < 0){
+
+                monthlyProfitAmountTd.setAttribute("class", "totalProfitText loss");
+       }
+       else
+       {
+                monthlyProfitAmountTd.setAttribute("class", "totalProfitText");
+       }
+
+
+       //Create total profit
+       var topTr2 = document.createElement("tr");
+
+       var totalProfitTextTd = document.createElement("td");
+       totalProfitTextTd.setAttribute("colspan", "5");
        totalProfitTextTd.setAttribute("class", "totalProfitText");
 
        var helpImg = document.createElement("img");
        helpImg.setAttribute("src", "//images.neopets.com/help/question_mark.png");
        helpImg.setAttribute("width", "8");
-       helpImg.setAttribute("title", "Total profit takes into account buy and sell prices. It does not clear when you remove history.");
+       helpImg.setAttribute("title", "Total profit takes into account buy and sell prices from all time. It does not clear when you remove history.");
 
        var tpText = document.createElement("b");
        tpText.textContent = "Total Profit:";
@@ -246,7 +305,7 @@ display:inline;
        totalProfitTextTd.appendChild(tpText);
 
        var totalProfitAmntTd = document.createElement("td");
-       totalProfitAmntTd.setAttribute("colspan", "2");
+       totalProfitAmntTd.setAttribute("colspan", "4");
        var prof = await getForeverProfit();
        totalProfitAmntTd.textContent = prof.toLocaleString("en-US") + " NP";
 
@@ -261,10 +320,26 @@ display:inline;
                 totalProfitAmntTd.setAttribute("class", "totalProfitText");
        }
 
-       topTr.appendChild(totalProfitTextTd);
-       topTr.appendChild(totalProfitAmntTd);
+       topTr.appendChild(monthlyProfitTextTd);
+       topTr.appendChild(monthlyProfitAmountTd);
+
+       topTr2.appendChild(totalProfitTextTd);
+       topTr2.appendChild(totalProfitAmntTd);
+
+       var monthTr = document.createElement("tr");
+       var monthTd = document.createElement("td");
+
+       var monthDrop = document.createElement("table");
+       monthDrop.setAttribute("id", "monthDrop");
+       monthTd.setAttribute("colspan", "7");
+       monthTr.appendChild(monthTd);
+       monthTd.appendChild(monthDrop);
+
 
        tableDoc.appendChild(topTr);
+
+       tableDoc.appendChild(monthTr);
+       tableDoc.appendChild(topTr2);
        tableDoc.appendChild(trDoc);
 
        var history = document.createElement("div");
@@ -404,9 +479,10 @@ display:inline;
                item.sold = true;
                item.sellprice = sellPrice;
 
-               item.soldtime = new Date().getTime();
+               item.soldtime = new Date();
 
                await updateForeverProfit(item.sellprice)
+               await setProfitPerMonth(item.sellprice, item.soldtime.getMonth(), item.soldtime.getYear());
 
                if (items.length > maxSaves)
                {
@@ -491,6 +567,23 @@ display:inline;
        }
    }
 
+   const getProfitPerMonth = async(month, year)=>{
+
+       var items = await getAllProfitMonthlyItems();
+       var perMonthItem = items.find(x => x.month == month, x=> x.year == year);
+       if (perMonthItem){
+        return perMonthItem.profit;
+       }
+       else{
+       return 0;
+       }
+   }
+
+   const getAllProfitMonthlyItems = async()=>{
+       const items = await GM.getValue(profitByMonth, "[]");
+       return JSON.parse(items);
+   }
+
    const updateForeverProfit = async(profit)=>
    {
        var currForeverProfit = await getForeverProfit();
@@ -500,11 +593,87 @@ display:inline;
    }
 
 
+   const setProfitPerMonth = async(profit, month, year)=>
+   {
+       var currProfitPerMonth = await getProfitPerMonth(month, year);
+       var newProfitPerMonth = currProfitPerMonth + profit;
+       var items = await getAllProfitMonthlyItems();
+
+       var perMonthItem = items.find(x => x.month == month, x=> x.year == year);
+       if (perMonthItem) {
+           perMonthItem.profit = perMonthItem.profit + profit;
+           await GM.setValue(profitByMonth, JSON.stringify(items));
+       }
+       else{
+          //create new month item
+
+           const monthitem = {
+               month: month,
+               year: year,
+               profit: profit
+           }
+
+           items.unshift(monthitem); //Add month item to list
+
+           GM.setValue(profitByMonth, JSON.stringify(items));
+       }
+   }
+
    //Clears out all of the items saved
    const clearItems = () => {
        GM.setValue(dataStorage, "[]");
        GM.setValue(idSave, 0);
    }
+
+   //open and close the monthly dropdown
+   const monthlyDropClick = async() =>{
+
+       var dropDiv = document.getElementById("monthDrop");
+       if (dropOpen)
+       {
+       dropDiv.style.display = "none";
+       }
+       else{
+       dropDiv.style.display = "table"
+           if (!dropOpenedBefore){
+               await loadMonthlyInfo();
+           }
+       }
+           dropOpen= !dropOpen;
+   }
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+   //Only load this once, and if asked for
+   const loadMonthlyInfo = async() =>{
+       GM.log("loading monthly");
+       dropOpenedBefore = true;
+       var items = await getAllProfitMonthlyItems();
+       var dropDiv = document.getElementById("monthDrop");
+
+
+       for (var i in items){
+          var dropTr = document.createElement("tr");
+
+          var dropTxtTd = document.createElement("td");
+          var dropTxt = document.createElement("b");
+          dropTxt.textContent = monthNames[items[i].month-1] + " 20" + (items[i].year-100);
+          dropTxtTd.appendChild(dropTxt);
+          dropTxtTd.setAttribute("width", "200");
+          var dropAmnt = document.createElement("td");
+           var dropAmntTxt = document.createElement("p");
+          dropAmntTxt.textContent = items[i].profit.toLocaleString("en-US") + " NP";
+          dropAmntTxt.style.textAlign = "right";
+          dropAmntTxt.style.width = "140px";
+           dropAmnt.appendChild(dropAmntTxt);
+
+          dropTr.appendChild(dropTxtTd);
+          dropTr.appendChild(dropAmnt);
+           dropDiv.appendChild(dropTr);
+       }
+
+   }
+
 
    //Confirmation for clearing the data
    const confirmClear = () =>{
