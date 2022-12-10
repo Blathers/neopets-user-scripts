@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Restock History
-// @version      2.0
+// @version      2.1
 // @description  Track your neopets restocks
 // @author       Harvey
 // @match        https://www.neopets.com/haggle.phtml
@@ -657,7 +657,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 
           var dropTxtTd = document.createElement("td");
           var dropTxt = document.createElement("b");
-          dropTxt.textContent = monthNames[items[i].month-1] + " 20" + (items[i].year-100);
+          dropTxt.textContent = monthNames[items[i].month] + " 20" + (items[i].year-100);
           dropTxtTd.appendChild(dropTxt);
           dropTxtTd.setAttribute("width", "200");
           var dropAmnt = document.createElement("td");
