@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Restock History
-// @version      2.1
+// @version      2.2
 // @description  Track your neopets restocks
 // @author       Harvey
 // @match        https://www.neopets.com/haggle.phtml
@@ -16,7 +16,7 @@
 
    const dataStorage = "restockTrackerData";
    const idSave = "idSaveData";
-   const maxSaves = 30;
+   const maxSaves = 100;
    const foreverProfit = "foreverProfitData";
    const profitByMonth = "profitByMonth";
    var dropOpen = false;
@@ -33,9 +33,16 @@
 
            var pItems = container.getElementsByTagName("p");
 
-           var itemImageDiv = container.getElementsByClassName("haggle-item")[0];
+           var haggleitem = container.getElementsByClassName("haggle-item");
+           if (!haggleitem[0]){
+               //Handle Trading Card Shop which has a different image box
+               haggleitem = container.getElementsByClassName("haggle-tcg");
+           }
+
+           var itemImageDiv = haggleitem[0];
            const styles = window.getComputedStyle(itemImageDiv);
            var itemImageUrl = styles.backgroundImage.slice(5, -2);
+
 
            var itemPriceP = pItems[1]; //P item that contains item price
            var itemPrice = itemPriceP.getElementsByTagName("b")[1];
@@ -386,6 +393,7 @@ background-color: #E5E5E5;
 
            var itemTd = document.createElement("td");
            var itemImg = document.createElement("img");
+           itemImg.setAttribute("height", "80");
            itemImg.setAttribute("src", savedItems[i].image);
            var itemP = document.createElement("p");
            itemP.textContent = savedItems[i].name;
