@@ -19,7 +19,7 @@ Click the "raw" text to get a pretty install option.
 ## Neopets Classic Inventory Header
 ![Classic Inventory](https://i.imgur.com/LRAON6O.png)
 * Replaces the desktop inventory link bar with images in a style that is similar (not exactly the same) to the classic headerbar 
-
+* Adds two middle links to fit the format, top sends you to neopia central and bottom sends you to your shop stock page
 ## Neopets Add Important links
 
 ![Sidebar links](https://i.imgur.com/NsBWvUv.png)
