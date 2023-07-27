@@ -16,6 +16,10 @@ Click the "raw" text to get a pretty install option.
 
 * Centers pet names and aligns usernames a little
 
+## Neopets Classic Inventory Header
+![Classic Inventory](https://i.imgur.com/LRAON6O.png)
+* Replaces the desktop inventory link bar with images in a style that is similar (not exactly the same) to the classic headerbar 
+
 ## Neopets Add Important links
 
 ![Sidebar links](https://i.imgur.com/NsBWvUv.png)
