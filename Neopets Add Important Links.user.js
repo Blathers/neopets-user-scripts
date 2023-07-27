@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets Add Important Links
-// @version      1.1
+// @version      1.2
 // @description  Adds some missing links to the sidebar
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -18,10 +18,10 @@ function getLinkHtml(link,icon,text)
     return linkadd;
 }
 
-function addLinks(onBoards)
+function addLinks(onBoards, onHome)
 {
     var beginning = "";
-    if (onBoards){
+    if (onBoards || onHome){
     beginning = "https://www.neopets.com/";
     }
     var addedLinks = "";
@@ -57,7 +57,8 @@ function addLinks(onBoards)
 
 function checkIfOnHomePage(){
     var onBoards = (document.URL.includes("https://www.neopets.com/neoboards/"));
-    addLinks(onBoards);
+    var onHome = (document.URL.includes("https://www.neopets.com/home/"));
+    addLinks(onBoards, onHome);
 }
 
 checkIfOnHomePage();
