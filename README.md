@@ -20,6 +20,8 @@ Click the "raw" text to get a pretty install option.
 ![Classic Inventory](https://i.imgur.com/LRAON6O.png)
 * Replaces the desktop inventory link bar with images in a style that is similar (not exactly the same) to the classic headerbar 
 * Adds two middle links to fit the format, top sends you to neopia central and bottom sends you to your shop stock page
+* Easily adjustable in the code to your own custom images (and the center options can be adjusted to be whatever links you want)
+
 ## Neopets Add Important links
 
 ![Sidebar links](https://i.imgur.com/NsBWvUv.png)
