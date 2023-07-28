@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets Classic Inventory Header
-// @version      1.0
+// @version      1.1
 // @description  Creates a classic look to your inventory
 // @author       Harvey
 // @match        https://www.neopets.com/inventory.phtml
@@ -18,7 +18,7 @@ addStyle (`
 addStyle(`
     .inv-menulinks li
     {
-    width: 50px;
+    max-width: 50px;
     margin:-10px!important;
     padding-top:5px;
     }`);
@@ -37,6 +37,20 @@ addStyle(`
     }
 `);
 addStyle(`
+    .inv-menulinks.mobile li:nth-child(6)
+    {
+    padding-left:70px;
+    padding-bottom:2px;
+    }
+`);
+addStyle(`
+    .inv-menulinks.mobile li:nth-child(8)
+    {
+    padding-left:0px;
+    padding-bottom:0px;
+    }
+`);
+addStyle(`
 .inv-menulinks li img:hover
 {
 margin-top:-10px;
@@ -45,9 +59,17 @@ margin-top:-10px;
 addStyle(`
 .middleLink{
 position:absolute;
-  top: 50%;
+  top: 70px;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+`);
+addStyle(`
+@media all and (max-width: 575px) {
+
+.middleLink{
+  left: 285px;
+}
 }
 `);
 addStyle(`
@@ -67,6 +89,11 @@ margin-top:-10px;
 addStyle(`
 .bottomLink img:hover{
 margin-top:10px;
+}`);
+addStyle(`
+.inv-log, .inv-safety
+{
+display:initial!important;
 }`);
 createImages();
 
@@ -124,20 +151,30 @@ function createImages()
     }
 
     lis[0].append(potion);
+    document.getElementsByClassName("inv-quickstock-icon")[0].setAttribute('src', potion.src);
     lis[1].append(gift);
+    document.getElementsByClassName("inv-transferlog-icon")[0].setAttribute('src', gift.src);
     lis[3].append(shirt);
+    document.getElementsByClassName("inv-transferlog-icon")[1].setAttribute('src', shirt.src);
     lis[4].append(chest);
+    document.getElementsByClassName("inv-transferlog-icon")[2].setAttribute('src', chest.src);
     lis[6].append(sword);
+    document.getElementsByClassName("inv-transferlog-icon")[3].setAttribute('src', sword.src);
 
     let menuBar = document.getElementsByClassName("inv-menubar")[0];
     menuBar.append(topLink);
     menuBar.append(bottomLink);
 
     lis[7].append(shed);
+    document.getElementsByClassName("inv-transferlog-icon")[4].setAttribute('src', shed.src);
     lis[8].append(display);
+    document.getElementsByClassName("inv-transferlog-icon")[5].setAttribute('src', display.src);
     lis[9].append(stamp);
+    document.getElementsByClassName("inv-transferlog-icon")[6].setAttribute('src', stamp.src);
     lis[10].append(card);
+    document.getElementsByClassName("inv-transferlog-icon")[7].setAttribute('src', card.src);
     lis[11].append(album);
+    document.getElementsByClassName("inv-transferlog-icon")[8].setAttribute('src', album.src);
 
 
 }
