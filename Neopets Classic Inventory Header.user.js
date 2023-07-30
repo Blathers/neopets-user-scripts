@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Neopets Classic Inventory Header
-// @version      1.1
+// @version      1.2
 // @description  Creates a classic look to your inventory
 // @author       Harvey
-// @match        https://www.neopets.com/inventory.phtml
+// @match        https://www.neopets.com/inventory.phtml*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @grant        none
 // ==/UserScript==
