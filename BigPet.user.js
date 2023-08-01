@@ -6,6 +6,7 @@
 // @match        http://www.neopets.com/neoboards/*
 // @match        https://www.neopets.com/neoboards/*
 // @match        http://neopets.com/neoboards/*
+// @match        https://neopets.com/neoboards/*
 // @grant        none
 // ==/UserScript==
 
