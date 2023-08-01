@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Sidebar Always Open
-// @version      1.0
+// @version      1.1
 // @description  Keep that sidebar open please!
 // @author       Harvey
 // @match        http://www.neopets.com/*
 // @match        https://www.neopets.com/*
+// @match        https://neopets.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @grant        GM.getValue
 // @grant        GM.setValue
