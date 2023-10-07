@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Neopets Beta Animation Toggler
-// @version      1.1
+// @version      1.2
 // @description  Ability to turn on or off the neopets animation on the beta site
 // @author       Harvey
 // @match        https://www.neopets.com/*
+// @match        https://neopets.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @grant       GM.setValue
 // @grant       GM.getValue

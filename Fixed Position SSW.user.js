@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         Fixed Position SSW
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      1.1
 // @description  Always keep the SSW and bookmark in fixed location
 // @author       Harvey
 // @match        http://www.neopets.com/*
 // @match        https://www.neopets.com/*
+// @match        https://neopets.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=neopets.com
 // @grant        GM.setValue
 // ==/UserScript==
