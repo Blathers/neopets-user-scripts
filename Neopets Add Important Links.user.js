@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets Add Important Links
-// @version      1.2
+// @version      1.3
 // @description  Adds some missing links to the sidebar
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -18,12 +18,8 @@ function getLinkHtml(link,icon,text)
     return linkadd;
 }
 
-function addLinks(onBoards, onHome)
+function addLinks()
 {
-    var beginning = "";
-    if (onBoards || onHome){
-    beginning = "https://www.neopets.com/";
-    }
     var addedLinks = "";
     var quickref = getLinkHtml("quickref.phtml", "nav-petcentral-icon__2020", "Quickref");
     var quickstock = getLinkHtml("quickstock.phtml", "nav-userlookup-icon__2020", "Quickstock");
@@ -34,7 +30,7 @@ function addLinks(onBoards, onHome)
     addedLinks = addedLinks + custom; //Customization link
     addedLinks = addedLinks + sdb; //Safety deposit box link
 
-    var addInvLink = "<a href=\"" +beginning +"inventory.phtml\"><div class=\"navsub-np-meter__2020\" style=\"display: inline-block;margin-right:5px; margin-bottom: 0px;text-align:center;\"><div class=\"navsub-np-icon__2020\" style=\"background:none!important;\"><img src=\"https://images.neopets.com/themes/h5/hauntedwoods/images/inventory-icon.svg\" width=\"25\"></div><span class=\"np-text__2020\">Inventory</span></div></a>"
+    var addInvLink = "<a href=\"https://www.neopets.com/inventory.phtml\"><div class=\"navsub-np-meter__2020\" style=\"display: inline-block;margin-right:5px; margin-bottom: 0px;text-align:center;\"><div class=\"navsub-np-icon__2020\" style=\"background:none!important;\"><img src=\"https://images.neopets.com/themes/h5/hauntedwoods/images/inventory-icon.svg\" width=\"25\"></div><span class=\"np-text__2020\">Inventory</span></div></a>"
 
     var clock = document.getElementsByClassName("nav-profile-dropdown-clock__2020")[0];
 
@@ -55,10 +51,5 @@ function addLinks(onBoards, onHome)
     }
 }
 
-function checkIfOnHomePage(){
-    var onBoards = (document.URL.includes("https://www.neopets.com/neoboards/"));
-    var onHome = (document.URL.includes("https://www.neopets.com/home/"));
-    addLinks(onBoards, onHome);
-}
 
-checkIfOnHomePage();
+    addLinks();
