@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets Add Important Links
-// @version      1.3
+// @version      1.4
 // @description  Adds some missing links to the sidebar
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -14,7 +14,7 @@ var $ = window.jQuery;
 //returns false if black
 function getLinkHtml(link,icon,text)
 {
-    var linkadd ="<a href=\"" +link + "\"><li class=\"nav-link-leave-beta__2020\" data-url=\"/" + link + "\"><div class=\"" + icon +"\"></div>" + text +"</li></a>";
+    var linkadd ="<a href=\"/" +link + "\"><li class=\"nav-link-leave-beta__2020\" data-url=\"/" + link + "\"><div class=\"" + icon +"\"></div>" + text +"</li></a>";
     return linkadd;
 }
 
