@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Restock History
-// @version      2.2
+// @version      2.4
 // @description  Track your neopets restocks
 // @author       Harvey
 // @match        https://www.neopets.com/haggle.phtml
@@ -72,9 +72,10 @@
 
            GM.setValue(dataStorage, JSON.stringify(itemData));
 
-           await updateForeverProfit(-buyPrice)
+
+           await updateForeverProfit(-buyPrice);
            await setProfitPerMonth(-buyPrice, today.getMonth(), today.getYear());
-       }
+       
    }
 
 
@@ -352,8 +353,7 @@ background-color: #E5E5E5;
        var history = document.createElement("div");
        history.setAttribute("class", "history");
        var historyInfo = document.createElement("p");
-       historyInfo.textContent = savedItems.length + "/" + maxSaves + " items logged ";
-
+       historyInfo.textContent = savedItems.length + "/" + maxSaves + " items logged";
        history.appendChild(historyInfo);
        var historyHelpImg = document.createElement("img");
        historyHelpImg.setAttribute("src", "//images.neopets.com/help/question_mark.png");
@@ -490,7 +490,7 @@ background-color: #E5E5E5;
                item.soldtime = new Date();
 
                await updateForeverProfit(item.sellprice)
-               await setProfitPerMonth(item.sellprice, item.soldtime.getMonth(), item.soldtime.getYear());
+			   await setProfitPerMonth(item.sellprice, item.soldtime.getMonth(), item.soldtime.getYear());
 
                if (items.length > maxSaves)
                {
@@ -578,7 +578,7 @@ background-color: #E5E5E5;
    const getProfitPerMonth = async(month, year)=>{
 
        var items = await getAllProfitMonthlyItems();
-       var perMonthItem = items.find(x => x.month == month, x=> x.year == year);
+       var perMonthItem = items.filter(x => x.month == month && x.year == year)[0];
        if (perMonthItem){
         return perMonthItem.profit;
        }
@@ -607,14 +607,13 @@ background-color: #E5E5E5;
        var newProfitPerMonth = currProfitPerMonth + profit;
        var items = await getAllProfitMonthlyItems();
 
-       var perMonthItem = items.find(x => x.month == month, x=> x.year == year);
+       var perMonthItem = items.filter(x => x.month == month && x.year == year)[0];
        if (perMonthItem) {
            perMonthItem.profit = perMonthItem.profit + profit;
            await GM.setValue(profitByMonth, JSON.stringify(items));
        }
        else{
           //create new month item
-
            const monthitem = {
                month: month,
                year: year,
@@ -654,8 +653,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 ];
    //Only load this once, and if asked for
    const loadMonthlyInfo = async() =>{
-       GM.log("loading monthly");
-       dropOpenedBefore = true;
+	   dropOpenedBefore = true;
        var items = await getAllProfitMonthlyItems();
        var dropDiv = document.getElementById("monthDrop");
 
