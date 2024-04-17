@@ -22,6 +22,10 @@ Click the "raw" text to get a pretty install option.
 * Adds two middle links to fit the format, top sends you to neopia central and bottom sends you to your shop stock page
 * Easily adjustable in the code to your own custom images (and the center options can be adjusted to be whatever links you want)
 
+## Neopets Daily Quest Helper
+![Daily Quest Helper](https://i.imgur.com/bO38H9C.png)
+* Adds a "Go!" button to help you go where you need to go to finish your daily quests!
+
 ## Neopets Add Important links
 
 ![Sidebar links](https://i.imgur.com/NsBWvUv.png)
