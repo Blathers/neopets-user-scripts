@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Neopets Daily Quest Helper
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Add a "Go!" button to aid your daily questing
 // @author       Harvey
 // @match        https://www.neopets.com/questlog/
@@ -56,6 +56,10 @@ function turnQuestTypeToLink(questText)
         else if (quest.includes("misfortune"))
         {
             return ("/halloween/wheel/index.phtml");
+        }
+        else if (quest.includes("knowledge"))
+        {
+            return ("/medieval/knowledge.phtml");
         }
     }
     else if (quest.includes("purchase"))
