@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Void Within Better UI Feedback
-// @version      1.0
+// @version      1.1
 // @description  Improves the UI color feedback for better readability
 // @author       Harvey
 // @match        https://www.neopets.com/tvw/rewards/
@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 (function() {
-    var stylesheet = `
+    const stylesheet = `
     .plothub-container.rewards.tvw .plothub-awards .plothub-achievements .plothub-act .plothub-achievement-list .plothub-achievement-item
     {
     background: rgba(69, 69, 70, 0.5) !important;
@@ -21,7 +21,7 @@
 `;
 
 
-    const style = document.createElement("style");
+    var style = document.createElement("style");
     style.type="text/css";
     style.id="harvey_void_ui_fix";
     style.innerHTML=stylesheet;
