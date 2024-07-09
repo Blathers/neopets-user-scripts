@@ -76,10 +76,3 @@ Recommended you use this with "Sidebar Always Open" so that they don't overlap s
 ![Animaion checkbox](https://i.imgur.com/L4DWHnN.png)
 
 * Adds a checkbox on the bottom bar that lets you turn off the beta animation for the birthday site theme
-
-## Void Within Better UI Feedback
-
-![Void within rewards are more clear](https://i.imgur.com/JwEsJs7.png)
-
-Improves the readability of the Void Within Plot rewards progress screen. Potentially will add other fixes for clarity in the future.
-
