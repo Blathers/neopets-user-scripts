@@ -75,7 +75,7 @@
 
            await updateForeverProfit(-buyPrice);
            await setProfitPerMonth(-buyPrice, today.getMonth(), today.getYear());
-       
+       }
    }
 
 
