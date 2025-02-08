@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Neopets Daily Quest Helper
 // @namespace    http://tampermonkey.net/
-// @version      1.2
+// @version      1.1
 // @description  Add a "Go!" button to aid your daily questing
 // @author       Harvey
 // @match        https://www.neopets.com/questlog/
@@ -14,19 +14,6 @@ GM_addStyle (`
      grid-template:auto / repeat(3, 1fr)!important;
     }`);
 
-GM_addStyle (`
-    .btn-single__2020{
-     display:inline!important;
-    }`);
-
-GM_addStyle (`
-    .ql-quest-buttons{
-     text-align: center;
-    }`);
-GM_addStyle (`
-    .ql-quest-buttons button{
-     margin: 10px !important;
-    }`);
 function adjustDailyChunks()
 {
     var results = document.getElementsByClassName("questlog-quest");
@@ -35,7 +22,6 @@ function adjustDailyChunks()
         var buttons = results[i].getElementsByClassName("ql-quest-buttons")[0];
         var helpButton = document.createElement("button");
         helpButton.classList.add("button-default__2020");
-        helpButton.classList.add("btn-single__2020");
         helpButton.classList.add("button-yellow__2020");
         helpButton.innerHTML = "Go!";
 
@@ -82,7 +68,7 @@ function turnQuestTypeToLink(questText)
     }
     else if (quest.includes("game"))
     {
-        return ("/games/h5game.phtml?game_id=1392");
+        return ("/games.phtml");
     }
     else if (quest.includes("customise"))
     {
