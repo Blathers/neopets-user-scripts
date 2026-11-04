@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Neopets Add Important Links
-// @version      1.4
+// @version      1.5
 // @description  Adds some missing links to the sidebar
 // @author       Harvey
 // @match        http://www.neopets.com/*
@@ -30,8 +30,6 @@ function addLinks()
     addedLinks = addedLinks + custom; //Customization link
     addedLinks = addedLinks + sdb; //Safety deposit box link
 
-    var addInvLink = "<a href=\"https://www.neopets.com/inventory.phtml\"><div class=\"navsub-np-meter__2020\" style=\"display: inline-block;margin-right:5px; margin-bottom: 0px;text-align:center;\"><div class=\"navsub-np-icon__2020\" style=\"background:none!important;\"><img src=\"https://images.neopets.com/themes/h5/hauntedwoods/images/inventory-icon.svg\" width=\"25\"></div><span class=\"np-text__2020\">Inventory</span></div></a>"
-
     var clock = document.getElementsByClassName("nav-profile-dropdown-clock__2020")[0];
 
     if (clock != null)
@@ -41,13 +39,6 @@ function addLinks()
         newEl.innerHTML = addedLinks;
         clock.parentNode.insertBefore(newEl, clock.nextSibling.nextSibling);
 
-        var bankLink = document.getElementsByClassName("navsub-right__2020")[0];
-
-
-        var invEl = document.createElement('span');
-        invEl.innerHTML = addInvLink;
-
-        bankLink.insertBefore(invEl, bankLink.children[0]);
     }
 }
 

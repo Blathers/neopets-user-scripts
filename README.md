@@ -31,7 +31,7 @@ Click the "raw" text to get a pretty install option.
 ![Sidebar links](https://i.imgur.com/NsBWvUv.png)
 ![Topbar link](https://i.imgur.com/nIFr7km.png)
 
-* Adds an inventory link on your top bar
+~~* Adds an inventory link on your top bar~~ 11/4 - removed because TNT added this functionality natively!
 
 * Adds the following links to your lefthand navigation
 
