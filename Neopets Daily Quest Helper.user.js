@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Neopets Daily Quest Helper
 // @namespace    http://tampermonkey.net/
-// @version      1.4
+// @version      1.5
 // @description  Add a "Go!" button to aid your daily questing
 // @author       Harvey
 // @match        https://www.neopets.com/questlog/
@@ -94,9 +94,12 @@ function turnQuestTypeToLink(questText) {
         return "/mall.phtml";
     } else if (quest.includes("game") || quest.includes("play ")) {
         return "/games/";
-    } 
-    else if (quest.includes("Customisation Spotlight")) {
-        return "/spotlights/custompet/index.phtml";return "/customisation/";
+    }
+    else if (quest.includes("scratchcard")){
+        return "/halloween/scratch.phtml";
+    }
+    else if (quest.includes("customisation spotlight")) {
+        return "/spotlights/custompet/?tab=vote";
     } else if (
         quest.includes("feed") ||
         quest.includes("groom") ||
