@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Neopets Daily Quest Helper
 // @namespace    http://tampermonkey.net/
-// @version      1.6
+// @version      1.7
 // @description  Add a "Go!" button to aid your daily questing
 // @author       Harvey
 // @match        https://www.neopets.com/questlog/
@@ -92,7 +92,7 @@ function turnQuestTypeToLink(questText) {
         return "/water/fishing.phtml";
     } else if (quest.includes("wearable") || quest.includes("popular") || quest.includes("trip")) {
         return "/mall.phtml";
-    } else if (quest.includes("game") || quest.includes("play ")) {
+    } else if (quest.includes("game")) {
         return "/games/";
     } else if (quest.includes("claim a recycled")){
         return "/donations.phtml";
@@ -106,7 +106,8 @@ function turnQuestTypeToLink(questText) {
         quest.includes("feed") ||
         quest.includes("groom") ||
         quest.includes("read") ||
-        quest.includes("book")
+        quest.includes("book") ||
+        quest.includes("play with a pet")
     ) {
         return "/inventory.phtml";
     }
